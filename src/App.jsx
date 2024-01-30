@@ -1,9 +1,12 @@
-import { useState } from "react";
-import "./App.css";
-import ItemsList from "./components/item";
-import StudentsList from "./components/student";
-import SubjectsList from "./components/subject";
 
+import "./App.css";
+import SubjectsList from "./components/Subject";
+import ItemsList from "./components/ItemList";
+import ItemFormFind from "./components/ItemFormFind";
+import StudentFormFind from "./components/StudentFormFind";
+import Students from "./components/student";
+import Subjects from "./components/Subject";
+import SubjectFormFind from "./components/SubjectFromFind";
 
 function App() {
   return (
@@ -12,11 +15,20 @@ function App() {
         <ItemsList />
       </div>
       <div className="card">
-        <StudentsList />
+        <Students/>
       </div>
       <div className="card">
-        <SubjectsList />
+        <Subjects />
       </div>
+      <p>
+        <ItemFormFind/>
+      </p>
+      <p>
+        <StudentFormFind/>
+      </p>
+      <p>
+        <SubjectFormFind/>
+      </p>
     </>
   );
 }

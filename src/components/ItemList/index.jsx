@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
+import "tailwindcss/tailwind.css"; 
 
-const Students = () => {
-  const [students, setStudents] = useState([]);
+
+const ItemsList = () => {
+  const [items, setItems] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const fetchStudents = async () => {
+  const fetchItems = async () => {
     try {
-      const response = await fetch("http://localhost:5000/students");
+      const response = await fetch("http://localhost:5000/items");
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
       const data = await response.json();
-      setStudents(data);
+      setItems(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -21,21 +23,19 @@ const Students = () => {
   };
 
   useEffect(() => {
-    fetchStudents();
+    fetchItems();
   }, []);
 
   return (
     <div className="max-w-screen-md mx-auto p-4">
-      <h1 className="text-3xl font-bold mb-4">Students List</h1>
+      <h1 className="text-3xl font-bold mb-4">Items List</h1>
       {isLoading && <p className="text-gray-600">Loading...</p>}
       {error && <p className="text-red-600">Error: {error}</p>}
       <ul className="list-disc pl-4">
-        {students.map((student) => (
-          <li key={student.ID} className="mb-2">
-            <span className="font-bold">FirstName:</span> {student.FirstName} |{" "}
-            <span className="font-bold">LastName:</span> {student.LastName} |{" "}
-            <span className="font-bold">Age:</span> {student.Age} |{" "}
-            <span className="font-bold">Grade:</span> {student.Grade}
+        {items.map((item) => (
+          <li key={item.ID} className="mb-2">
+            <span className="font-bold">Name:</span> {item.Name} 
+            <span className="font-bold">Price:</span> {item.Price}
           </li>
         ))}
       </ul>
@@ -43,4 +43,4 @@ const Students = () => {
   );
 };
 
-export default Students;
+export default ItemsList;

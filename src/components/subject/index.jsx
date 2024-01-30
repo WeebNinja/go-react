@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const SubjectsList = () => {
+const Subjects = () => {
   const [subjects, setSubjects] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -41,4 +41,4 @@ const SubjectsList = () => {
   );
 };
 
-export default SubjectsList;
+export default Subjects;
